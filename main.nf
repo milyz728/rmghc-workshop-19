@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 params.name             = "RNA-seq"
-params.email            = "michael.smallegan@colorado.edu"
-params.reads            = "/data/fastq/*{*_R1,*_R2}.fastq.gz"
+params.email            = "mzelecho@asu.edu"
+params.reads            = "/home/milyz728/workshop/data/fastq/*{*_R1,*_R2}.fastq.gz"
 
 
 
@@ -14,10 +14,10 @@ log.info "\n"
 
 
 
-annotation = Channel.fromPath("/data/annotation/*")
-genome = Channel.fromPath("/data/genome/*")
-sample_info_for_de = Channel.fromPath("/data/sample_info/*")
-index = Channel.fromPath("/data/index")
+annotation = Channel.fromPath("/home/milyz728/workshop/data/annotation/*")
+genome = Channel.fromPath("/home/milyz728/workshop/data/genome/*")
+sample_info_for_de = Channel.fromPath("/home/mzelechowski/workshop/data/sample_info/*")
+index = Channel.fromPath("/home/milyz728/workshop/data/index")
 reads = Channel.fromFilePairs(params.reads, size: -1)
   .ifEmpty { error "Can't find any reads matching: ${params.reads}" }
   .into {
